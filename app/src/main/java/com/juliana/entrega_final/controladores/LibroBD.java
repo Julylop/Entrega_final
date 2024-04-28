@@ -1,8 +1,11 @@
 package com.juliana.entrega_final.controladores;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -53,31 +56,115 @@ public class LibroBD extends SQLiteOpenHelper implements I_LibroBD {
 
     @Override
     public Libro elemento(int id) {
-        return null;
+        SQLiteDatabase database = getReadableDatabase();
+        String sql = "SELECT * FROM libros WHERE _id= "+id;
+        Cursor cursor = database.rawQuery(sql, null);
+        try {
+        if(cursor.moveToNext())
+            return extraerLibro(cursor);
+        else
+            return null;
+        }catch (Exception e){
+            Log.d("TAG", "Error elemento (id) LibroBD" + e.getMessage() );
+            throw e;
+        }finally {
+            if(cursor != null) cursor.close();
+        }
+    }
+
+    private Libro extraerLibro(Cursor cursor) {
+        Libro libro = new Libro();
+        libro.setId(cursor.getInt(0));
+        libro.setTitulo(cursor.getString(1));
+        libro.setSubtitulo(cursor.getString(2));
+        libro.setIsbn(cursor.getString(3));
+        libro.setAutor(cursor.getString(4));
+        libro.setAnioPublicacion(cursor.getInt(5));
+        libro.setPrecio(cursor.getDouble(6));
+
+
+        return libro;
     }
 
     @Override
     public Libro elemento(String title) {
-        return null;
+        SQLiteDatabase database = getReadableDatabase();
+        String sql = "SELECT * FROM libros WHERE titulo=' " +title + "'";
+        Cursor cursor = database.rawQuery(sql, null);
+        try {
+            if(cursor.moveToNext())
+                return extraerLibro(cursor);
+            else
+                return null;
+        }catch (Exception e){
+            Log.d("TAG", "Error elemento (title) LibroBD" + e.getMessage() );
+            throw e;
+        }finally {
+            if(cursor != null) cursor.close();
+        }
+
     }
 
     @Override
     public List<Libro> lista() {
-        return null;
+
+       SQLiteDatabase database = getReadableDatabase();
+       String sql = "SELECT * FROM libros ORDER BY titulo ASC";
+       Cursor cursor = database.rawQuery(sql, null);
+       if (cursor.moveToFirst() ){
+           do{
+               librosList.add(
+                       new Libro(cursor.getInt(0),
+                               cursor.getString(1),
+                               cursor.getString(2),
+                               cursor.getString(3),
+                               cursor.getString(4),
+                               cursor.getInt(5),
+                               cursor.getDouble(6) )
+               );
+           }while(cursor.moveToNext());
+       }
+       cursor.close();
+       return librosList;
     }
 
     @Override
     public void agregar(Libro book) {
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("titulo", book.getTitulo());
+        values.put("subtitulo", book.getTitulo());
+        values.put("autor", book.getTitulo());
+        values.put("isbn", book.getTitulo());
+        values.put("anio", book.getTitulo());
+        values.put("precio", book.getTitulo());
+        database.insert("libros", null, values);
 
     }
 
     @Override
     public void actualizar(int id, Libro book) {
 
+        SQLiteDatabase database = getWritableDatabase();
+        String[] parametros = { String.valueOf(id) };
+
+        ContentValues values = new ContentValues();
+        values.put("titulo", book.getTitulo());
+        values.put("subtitulo", book.getTitulo());
+        values.put("autor", book.getTitulo());
+        values.put("isbn", book.getTitulo());
+        values.put("anio", book.getTitulo());
+        values.put("precio", book.getTitulo());
+
+        database.update("libros", values, "_id=?", parametros);
     }
 
     @Override
     public void borrar(int id) {
 
+        SQLiteDatabase database = getWritableDatabase();
+        String[] parametros = { String.valueOf(id) };
+
+        database.delete("libros", "_id=?", parametros);
     }
-}
+} //LibroBD
