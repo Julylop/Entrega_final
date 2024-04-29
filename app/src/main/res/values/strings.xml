@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Entrega_final</string>
+    <string name="app_name">Librería</string>
 
     <string name="str_btnbuscar">Buscar Libro</string>
     <string name="str_btnregistrar">Registrar Libro</string>

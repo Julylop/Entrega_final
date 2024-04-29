@@ -26,6 +26,8 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/str_btnregistrar"
         android:onClick="onClick"
+        android:backgroundTint="@color/green"
+        android:ems="10"
         />
 
     <Button
@@ -35,6 +37,9 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/str_btnbuscar"
         android:onClick="onClick"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+
         />
 
     <Button
@@ -44,5 +49,7 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/str_btnListar"
         android:onClick="onClick"
+        android:backgroundTint="@color/green"
+        android:ems="10"
         />
 </LinearLayout>
