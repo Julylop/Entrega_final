@@ -105,4 +105,44 @@
         android:text=""
         android:inputType="numberDecimal"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ges_btnguardar"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/str_btnguardar"
+        android:onClick="onClick"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ges_btnactualizar"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/str_btnactualizar"
+        android:onClick="onClick"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ges_btnborrar"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/str_btnborrar"
+        android:onClick="onClick"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        />
+    </LinearLayout>
+
 </LinearLayout>

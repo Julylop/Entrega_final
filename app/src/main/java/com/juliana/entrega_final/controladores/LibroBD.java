@@ -25,13 +25,13 @@ public class LibroBD extends SQLiteOpenHelper implements I_LibroBD {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE libros("+
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                "titulo TEXT, "+
-                "subtitulo TEXT, "+
-                "isbn TEXT, "+
-                "autor TEXT, "+
-                "anio INTEGER, "+
+        String sql = "CREATE TABLE libros(" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "titulo TEXT, " +
+                "subtitulo TEXT, " +
+                "isbn TEXT, " +
+                "autor TEXT, " +
+                "anio INTEGER, " +
                 "precio REAL) ";
         db.execSQL(sql);
         String insert = "INSERT INTO libros VALUES (null,"+
