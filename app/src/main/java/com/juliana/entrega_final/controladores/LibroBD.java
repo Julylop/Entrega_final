@@ -89,7 +89,7 @@ public class LibroBD extends SQLiteOpenHelper implements I_LibroBD {
     @Override
     public Libro elemento(String title) {
         SQLiteDatabase database = getReadableDatabase();
-        String sql = "SELECT * FROM libros WHERE titulo=' " +title + "'";
+        String sql = "SELECT * FROM libros WHERE titulo='" + title + "'";
         Cursor cursor = database.rawQuery(sql, null);
         try {
             if(cursor.moveToNext())
@@ -133,11 +133,11 @@ public class LibroBD extends SQLiteOpenHelper implements I_LibroBD {
         SQLiteDatabase database = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("titulo", book.getTitulo());
-        values.put("subtitulo", book.getTitulo());
-        values.put("autor", book.getTitulo());
-        values.put("isbn", book.getTitulo());
-        values.put("anio", book.getTitulo());
-        values.put("precio", book.getTitulo());
+        values.put("subtitulo", book.getSubtitulo());
+        values.put("autor", book.getAutor());
+        values.put("isbn", book.getIsbn());
+        values.put("anio", book.getAnioPublicacion());
+        values.put("precio", book.getPrecio());
         database.insert("libros", null, values);
 
     }
@@ -150,11 +150,11 @@ public class LibroBD extends SQLiteOpenHelper implements I_LibroBD {
 
         ContentValues values = new ContentValues();
         values.put("titulo", book.getTitulo());
-        values.put("subtitulo", book.getTitulo());
-        values.put("autor", book.getTitulo());
-        values.put("isbn", book.getTitulo());
-        values.put("anio", book.getTitulo());
-        values.put("precio", book.getTitulo());
+        values.put("subtitulo", book.getSubtitulo());
+        values.put("autor", book.getAutor());
+        values.put("isbn", book.getIsbn());
+        values.put("anio", book.getAnioPublicacion());
+        values.put("precio", book.getPrecio());
 
         database.update("libros", values, "_id=?", parametros);
     }

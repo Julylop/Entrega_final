@@ -1,148 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".GestionarLibroActivity">
 
     <TextView
+        android:id="@+id/tvgestionlibros"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:paddingTop="10sp"
-        android:paddingBottom="10sp"
+        android:layout_marginBottom="16dp"
         android:text="@string/str_gestionlibros"
-        android:textStyle="bold"
+        android:textColor="#9C27B0"
         android:textSize="24sp"
-        android:textColor="#9C27B0"/>
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tvtitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_titulo"
+        android:layout_below="@id/tvgestionlibros"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp"/>
 
     <EditText
+        android:id="@+id/ges_txttitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ges_txttitulo"
+        android:layout_below="@+id/tvtitulo"
         android:hint="@string/str_digitetitulo"
-        android:inputType="text"/>
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:autofillHints="title" />
 
     <TextView
+        android:id="@+id/tv_sub_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_subtitulo"
+        android:layout_below="@id/ges_txttitulo"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp"/>
 
     <EditText
+        android:id="@+id/ges_txtsubtitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ges_txtsubtitulo"
+        android:inputType="text"
         android:text=""
-        android:inputType="text"/>
+        android:layout_below="@+id/tv_sub_titulo"
+        android:layout_marginTop="8dp"
+        android:autofillHints="title"/>
 
     <TextView
+        android:id="@+id/tv_isbn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_isbn"
+        android:layout_below="@id/ges_txtsubtitulo"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp"/>
 
     <EditText
+        android:id="@+id/ges_txtisbn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ges_txtisbn"
+        android:inputType="number"
         android:text=""
-        android:inputType="number"/>
+        android:layout_below="@+id/tv_isbn"
+        android:layout_marginTop="8dp"
+        android:autofillHints="isbn"/>
 
     <TextView
+        android:id="@+id/tv_autor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_autor"
+        android:layout_below="@id/ges_txtisbn"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp"/>
 
     <EditText
+        android:id="@+id/ges_txtautor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ges_txtautor"
+        android:inputType="textPersonName"
         android:text=""
-        android:inputType="textPersonName"/>
+        android:layout_below="@+id/tv_autor"
+        android:layout_marginTop="8dp"
+        android:autofillHints="personName"/>
 
     <TextView
+        android:id="@+id/tv_anio_publicacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_anio_publicacion"
+        android:layout_below="@id/ges_txtautor"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp"/>
 
     <EditText
+        android:id="@+id/ges_txtanio_publicacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ges_txtanio_publicacion"
+        android:inputType="number"
         android:text=""
-        android:inputType="number"/>
+        android:layout_below="@+id/tv_anio_publicacion"
+        android:layout_marginTop="8dp"
+        android:autofillHints="year"/>
 
     <TextView
+        android:id="@+id/tv_precio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/str_precio"
+        android:layout_below="@id/ges_txtanio_publicacion"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="16dp"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/ges_txtprecio"
-        android:text=""
-        android:inputType="numberDecimal"/>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:inputType="numberDecimal"
+        android:text=""
+        android:layout_below="@+id/tv_precio"
+        android:layout_marginTop="8dp"
+        android:autofillHints="price"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ges_btnguardar"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/str_btnguardar"
-        android:onClick="onClick"
-        android:backgroundTint="@color/green"
-        android:ems="10"
-        />
+            android:id="@+id/ges_btnguardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/green"
+            android:onClick="onClick"
+            android:text="@string/str_btnguardar"
+            android:layout_below="@id/ges_txtprecio"
+            android:layout_marginTop="16dp"
+            android:layout_alignParentStart="true"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/ges_btnactualizar"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/str_btnactualizar"
-        android:onClick="onClick"
-        android:backgroundTint="@color/green"
-        android:ems="10"
-
-        />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ges_btnborrar"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/str_btnborrar"
-        android:onClick="onClick"
         android:backgroundTint="@color/green"
-        android:ems="10"
-        />
-    </LinearLayout>
+        android:onClick="onClick"
+        android:text="@string/str_btnactualizar"
+        android:layout_below="@id/ges_txtprecio"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/ges_btnguardar"
+        android:layout_marginStart="16dp"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/ges_btnborrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/green"
+        android:onClick="onClick"
+        android:text="@string/str_btnborrar"
+        android:layout_below="@id/ges_txtprecio"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/ges_btnactualizar"
+        android:layout_marginStart="16dp"/>
+
+
+</RelativeLayout>

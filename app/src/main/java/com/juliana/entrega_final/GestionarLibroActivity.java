@@ -4,17 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 import com.juliana.entrega_final.controladores.LibroBD;
 import com.juliana.entrega_final.modelos.Libro;
+
+import java.util.Locale;
 
 public class GestionarLibroActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -22,6 +23,8 @@ public class GestionarLibroActivity extends AppCompatActivity implements View.On
     EditText txttitulo, txtsubtitulo, txtisbn, txtautor, txtaniopublicacion, txtprecio;
     int id;
     LibroBD libroBD;
+
+    Button btnGuardar,btnActualizar,btnBorrar;
 
 
     @Override
@@ -32,6 +35,7 @@ public class GestionarLibroActivity extends AppCompatActivity implements View.On
 
     }
 
+
     private void init(){
         context = getApplicationContext();
         txttitulo =findViewById(R.id.ges_txttitulo);
@@ -41,16 +45,41 @@ public class GestionarLibroActivity extends AppCompatActivity implements View.On
         txtaniopublicacion =findViewById(R.id.ges_txtanio_publicacion);
         txtprecio =findViewById(R.id.ges_txtprecio);
 
+
+        btnGuardar=findViewById(R.id.ges_btnguardar);
+        btnActualizar= findViewById(R.id.ges_btnactualizar);
+        btnBorrar= findViewById(R.id.ges_btnborrar);
+
         Intent i = getIntent();
         Bundle bolsa = i.getExtras();
-        id = bolsa.getInt("id");
+        if (bolsa != null) {
+            id = bolsa.getInt("id");
+        }
         if(id !=0){
-            txttitulo.setText(bolsa.getString("titulo"));
-            txtsubtitulo.setText(bolsa.getString("subtitulo"));
-            txtautor.setText(bolsa.getString("autor"));
-            txtisbn.setText(bolsa.getString("isbn"));
-            txtaniopublicacion.setText(bolsa.getInt("anio_publicacion"));
-            txtprecio.setText(bolsa.getDouble("precio")+ "" );
+            if (bolsa != null) {
+                txttitulo.setText(bolsa.getString("titulo"));
+            }
+            if (bolsa != null) {
+                txtsubtitulo.setText(bolsa.getString("subtitulo"));
+            }
+            if (bolsa != null) {
+                txtautor.setText(bolsa.getString("autor"));
+            }
+            if (bolsa != null) {
+                txtisbn.setText(bolsa.getString("isbn"));
+            }
+            if (bolsa != null) {
+                int anioPublicacion = bolsa.getInt("anio_publicacion");
+                txtaniopublicacion.setText(String.valueOf(anioPublicacion));
+            }
+            if (bolsa != null && txtprecio != null) {
+                double precio = bolsa.getDouble("precio");
+                txtprecio.setText(String.format(Locale.getDefault(), "%.2f", precio));
+                btnGuardar.setEnabled(false);
+            }
+        }else{
+            btnActualizar.setEnabled(false);
+            btnBorrar.setEnabled(false);
         }
     }
 
@@ -95,6 +124,8 @@ public class GestionarLibroActivity extends AppCompatActivity implements View.On
             Toast.makeText(context, "Guardado Nuevo OK", Toast.LENGTH_LONG).show();
         }else{
             libroBD.actualizar(id, libro);
+            btnActualizar.setEnabled(false);
+            btnBorrar.setEnabled(false);
             Toast.makeText(context, "Actualizado Existente OK", Toast.LENGTH_LONG).show();
         }
     }
@@ -108,27 +139,26 @@ public class GestionarLibroActivity extends AppCompatActivity implements View.On
         }else{
             libroBD.borrar(id);
             limpiarCampos();
+            btnGuardar.setEnabled(true);
+            btnActualizar.setEnabled(false);
+            btnBorrar.setEnabled(false);
             Toast.makeText(context, "Se borro el registro", Toast.LENGTH_LONG).show();
         }
     }
 
-
-
-
     //FUNCION PARA QUE CUANDO DEN CLIC EN LOS BOTONES SE HAGAN LAS FUNCIONES
     @Override
     public void onClick(View view) {
-        switch ( view.getId()){
-            case R.id.ges_btnguardar:
-                guardar();
-                break;
-            case R.id.ges_btnactualizar:
-                guardar();
-                break;
-            case R.id.ges_btnborrar:
-                borrar();
-                break;
+        int id = view.getId();
 
+        if (id == R.id.ges_btnguardar) {
+            guardar();
+        } else if (id == R.id.ges_btnactualizar) {
+            guardar();
+        } else if (id == R.id.ges_btnborrar) {
+            borrar();
         }
     }
+
+
 }

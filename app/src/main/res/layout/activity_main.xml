@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
+        android:layout_height="363dp"
         android:src="@drawable/librosportada"
-        android:contentDescription="@string/app_name"
-        />
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
 
 
 
     <Button
+        android:id="@+id/btnregistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnregistrar"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/profile_image"
+        android:layout_centerHorizontal="true"
         android:text="@string/str_btnregistrar"
         android:onClick="onClick"
         android:backgroundTint="@color/green"
@@ -31,10 +31,11 @@
         />
 
     <Button
+        android:id="@+id/btnbuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnbuscar"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/btnregistrar"
+        android:layout_centerHorizontal="true"
         android:text="@string/str_btnbuscar"
         android:onClick="onClick"
         android:backgroundTint="@color/green"
@@ -43,13 +44,14 @@
         />
 
     <Button
+        android:id="@+id/btnlistar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnlistar"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/btnbuscar"
+        android:layout_centerHorizontal="true"
         android:text="@string/str_btnListar"
         android:onClick="onClick"
         android:backgroundTint="@color/green"
         android:ems="10"
         />
-</LinearLayout>
+</RelativeLayout>

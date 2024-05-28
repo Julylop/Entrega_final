@@ -36,16 +36,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnregistrar ){
-            Intent intent = new Intent(context, GestionarLibroActivity.class);
+            Intent intent1 = new Intent(context, GestionarLibroActivity.class);
             Toast.makeText(context, "Registrar", Toast.LENGTH_SHORT).show();
-            startActivity(intent);
+            Bundle bolsa = new Bundle();
+            bolsa.putInt("id",0);
+            intent1.putExtras(bolsa);
+            startActivity(intent1);
+
         } else if (view.getId() == R.id.btnbuscar) {
-            Intent intent = new Intent(context, BuscarLibroActivity.class);
-            startActivity(intent);
+            Intent intent2 = new Intent(context, BuscarLibroActivity.class);
+            startActivity(intent2);
             Toast.makeText(context, "Buscar", Toast.LENGTH_SHORT).show();
         } else if (view.getId() == R.id.btnlistar) {
-            Intent intent = new Intent(context, ListadoLibrosActivity.class);
-            startActivity(intent);
+            Intent intent3 = new Intent(context, ListadoLibrosActivity.class);
+            startActivity(intent3);
             Toast.makeText(context, "Listar", Toast.LENGTH_SHORT).show();
         }
     }
