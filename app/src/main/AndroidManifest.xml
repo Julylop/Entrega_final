@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Entrega_final"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".GestionarLibroActivity"
             android:exported="false" />
         <activity
@@ -22,7 +25,7 @@
             android:name=".BuscarLibroActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AnimacionActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

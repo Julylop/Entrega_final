@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="match_parent"
