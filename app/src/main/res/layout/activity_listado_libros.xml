@@ -9,4 +9,24 @@
     android:orientation="vertical"
     tools:context=".ListadoLibrosActivity">
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:text="@string/str_listarlibros"
+        android:textColor="#FF03F4D0"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaLibros"/>
+
 </LinearLayout>
